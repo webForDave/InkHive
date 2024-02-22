@@ -3,21 +3,22 @@ import './Home.css';
 
 const Home = () => {
 
-    const [name, setName] = useState('David');
-
-    const handleClick = () => {
-        setName('Mike')
-
-        if (name === 'Mike') {
-            setName('David');
-        }
-    };
+    const [blogs, setBlogs] = useState([
+        {title: 'Welcome', body: 'Lorem ipsum...', id: 1, author: 'Dave'},
+        {title: 'School tips', body: 'Lorem ipsum...', id: 2, author: 'Ken'},
+        {title: 'Sleeping', body: 'Lorem ipsum...', id: 3, author: 'Joy'}
+    ])
 
     return(
         <div className="home">
-            <h1>Homepage</h1>
-            <p>{name}</p>
-            <button onClick={handleClick}>Click this</button>
+            {
+                blogs.map(blog => (
+                    <div key={blog.id} className='blog-preview'>
+                        <h3>{ blog.title }</h3>
+                        <p>written by { blog.author }</p>
+                    </div>
+                ))
+            }
         </div>
     );
 };
