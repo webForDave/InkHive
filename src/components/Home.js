@@ -1,14 +1,23 @@
+import { useState } from 'react';
 import './Home.css';
+
 const Home = () => {
 
-    const handleClick = () => console.log('Clicked');
-    const handleClickAgain = name => console.log('Hello ' + name)
+    const [name, setName] = useState('David');
+
+    const handleClick = () => {
+        setName('Mike')
+
+        if (name === 'Mike') {
+            setName('David');
+        }
+    };
 
     return(
         <div className="home">
             <h1>Homepage</h1>
+            <p>{name}</p>
             <button onClick={handleClick}>Click this</button>
-            <button onClick={() => handleClickAgain(prompt('What is your name?'))}>Click again</button>
         </div>
     );
 };
